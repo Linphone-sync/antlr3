@@ -1,6 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2012 for Windows Desktop
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C", "C.vcxproj", "{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libantlr3c", "libantlr3c.vcxproj", "{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,8 +9,6 @@ Global
 		Debug|x64 = Debug|x64
 		DebugDLL|Win32 = DebugDLL|Win32
 		DebugDLL|x64 = DebugDLL|x64
-		Deployment|Win32 = Deployment|Win32
-		Deployment|x64 = Deployment|x64
 		Release|Win32 = Release|Win32
 		Release|x64 = Release|x64
 		ReleaseDLL|Win32 = ReleaseDLL|Win32
@@ -24,10 +23,6 @@ Global
 		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.DebugDLL|Win32.Build.0 = DebugDLL|Win32
 		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.DebugDLL|x64.ActiveCfg = DebugDLL|x64
 		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.DebugDLL|x64.Build.0 = DebugDLL|x64
-		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Deployment|Win32.ActiveCfg = DebugDLL|Win32
-		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Deployment|Win32.Build.0 = DebugDLL|Win32
-		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Deployment|x64.ActiveCfg = DebugDLL|x64
-		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Deployment|x64.Build.0 = DebugDLL|x64
 		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Release|Win32.ActiveCfg = Release|Win32
 		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Release|Win32.Build.0 = Release|Win32
 		{0F0FE03A-78F3-4B34-9DCE-0CDFF1FB5C40}.Release|x64.ActiveCfg = Release|x64
@@ -39,15 +34,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
-		SccProjectName0 = Perforce\u0020Project
-		SccLocalPath0 = ..\\..
-		SccProvider0 = MSSCCI:Perforce\u0020SCM
-		SccProjectFilePathRelativizedFromConnection0 = runtime\\C\\
-		SccProjectUniqueName1 = C.vcproj
-		SccLocalPath1 = ..\\..
-		SccProjectFilePathRelativizedFromConnection1 = runtime\\C\\
 	EndGlobalSection
 EndGlobal
