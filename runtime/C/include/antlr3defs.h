@@ -137,7 +137,7 @@
 
 #include    <windows.h>
 #include    <stdlib.h>
-#include    <winsock.h>
+#include    <winsock2.h>
 #include    <stdio.h>
 #include    <sys/types.h>
 #include    <sys/stat.h>
