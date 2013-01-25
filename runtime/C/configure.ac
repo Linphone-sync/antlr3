@@ -134,9 +134,18 @@ esac
  ;;
 esac
 
+
+case $host in
+*mingw*)
+ ANTLR_LIBS="-lWs2_32"
+ ;;
+esac
+
+
 CFLAGS="$CCFLAGS64 $CPPCMNTFLAGS $OPTIMFLAGS $DEBUGFLAGS $WARNFLAGS"
 AC_MSG_RESULT([$CFLAGS])
 AC_SUBST([OBJECT_MODE])
+AC_SUBST(ANTLR_LIBS)
 
 AS_IF([test "x$enable_antlrdebug" = xno], [AC_DEFINE([ANTLR3_NODEBUGGER], [1], [Define if ANTLR debugger not required])], [])
 AS_IF([test x"$enable_64bit" = xyes], [AC_DEFINE([ANTLR3_USE_64BIT], [1], [Define if 64 bit mode required])], [])
