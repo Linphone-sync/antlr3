@@ -56,21 +56,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</OutDir>
-    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</OutDir>
-    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</OutDir>
-    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</IntDir>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</OutDir>
-    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)</IntDir>
+  <PropertyGroup>
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)\</OutDir>
+    <IntDir>$(SolutionDir)$(Platform)\$(Configuration)\$(TargetName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifest>false</GenerateManifest>
@@ -82,8 +70,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
@@ -106,8 +93,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
@@ -127,8 +113,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_USRDLL;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>false</MinimalRebuild>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
@@ -151,8 +136,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <CompileAsWinRT>false</CompileAsWinRT>
       <AdditionalUsingDirectories>$(WindowsSDK_MetadataPath);$(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
@@ -166,8 +150,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="targetver.h" />
     <ClInclude Include="..\..\..\include\antlr3.h" />
     <ClInclude Include="..\..\..\include\antlr3baserecognizer.h" />
     <ClInclude Include="..\..\..\include\antlr3basetree.h" />
@@ -200,79 +182,29 @@
     <ClInclude Include="..\..\..\include\antlr3treeparser.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader>Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3baserecognizer.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3basetree.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3basetreeadaptor.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3bitset.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3collections.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3commontoken.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3commontree.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3commontreeadaptor.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3commontreenodestream.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3convertutf.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3cyclicdfa.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3debughandlers.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3encodings.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3exception.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3filestream.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3inputstream.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3intstream.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3lexer.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3parser.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3rewritestreams.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3string.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3tokenstream.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="..\..\..\src\antlr3treeparser.c">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
+    <ClCompile Include="..\..\..\src\antlr3baserecognizer.c" />
+    <ClCompile Include="..\..\..\src\antlr3basetree.c" />
+    <ClCompile Include="..\..\..\src\antlr3basetreeadaptor.c" />
+    <ClCompile Include="..\..\..\src\antlr3bitset.c" />
+    <ClCompile Include="..\..\..\src\antlr3collections.c" />
+    <ClCompile Include="..\..\..\src\antlr3commontoken.c" />
+    <ClCompile Include="..\..\..\src\antlr3commontree.c" />
+    <ClCompile Include="..\..\..\src\antlr3commontreeadaptor.c" />
+    <ClCompile Include="..\..\..\src\antlr3commontreenodestream.c" />
+    <ClCompile Include="..\..\..\src\antlr3convertutf.c" />
+    <ClCompile Include="..\..\..\src\antlr3cyclicdfa.c" />
+    <ClCompile Include="..\..\..\src\antlr3debughandlers.c" />
+    <ClCompile Include="..\..\..\src\antlr3encodings.c" />
+    <ClCompile Include="..\..\..\src\antlr3exception.c" />
+    <ClCompile Include="..\..\..\src\antlr3filestream.c" />
+    <ClCompile Include="..\..\..\src\antlr3inputstream.c" />
+    <ClCompile Include="..\..\..\src\antlr3intstream.c" />
+    <ClCompile Include="..\..\..\src\antlr3lexer.c" />
+    <ClCompile Include="..\..\..\src\antlr3parser.c" />
+    <ClCompile Include="..\..\..\src\antlr3rewritestreams.c" />
+    <ClCompile Include="..\..\..\src\antlr3string.c" />
+    <ClCompile Include="..\..\..\src\antlr3tokenstream.c" />
+    <ClCompile Include="..\..\..\src\antlr3treeparser.c" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Windows">
