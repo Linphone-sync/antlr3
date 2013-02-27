@@ -65,7 +65,7 @@ include_HEADERS =	include/antlr3.h						\
 libantlr3c_la_LDFLAGS = -no-undefined -avoid-version
 libantlr3c_la_LIBADD = $(ANTLR_LIBS)
 
-INCLUDES = -Iinclude
+INCLUDES = -I$(top_srcdir)/include
 
 EXTRA_DIST = 	\
 				vsrulefiles/antlr3lexerandparser.rules		\
