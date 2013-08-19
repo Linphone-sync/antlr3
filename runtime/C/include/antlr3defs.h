@@ -200,7 +200,7 @@ typedef	uint8_t	    ANTLR3_BOOLEAN, *pANTLR3_BOOLEAN;
 typedef FILE *	    ANTLR3_FDSC;
 typedef	struct stat ANTLR3_FSTAT_STRUCT;
 
-#ifdef	ANTLR3_USE_64BIT
+#if defined(__LP64__) || defined(_LP64) || defined(_WIN64)
 #define	ANTLR3_FUNC_PTR(ptr)	(void *)((ANTLR3_UINT64)(ptr))
 #define ANTLR3_UINT64_CAST(ptr) (ANTLR3_UINT64)(ptr))
 #define	ANTLR3_UINT32_CAST(ptr)	(ANTLR3_UINT32)((ANTLR3_UINT64)(ptr))
@@ -413,7 +413,7 @@ typedef uint32_t    ANTLR3_BOOLEAN, *pANTLR3_BOOLEAN;
 typedef FILE *	    ANTLR3_FDSC;
 typedef	struct stat ANTLR3_FSTAT_STRUCT;
 
-#ifdef	ANTLR3_USE_64BIT
+#if defined(__LP64__) || defined(_LP64) || defined(_WIN64)
 #define	ANTLR3_FUNC_PTR(ptr)    (void *)((ANTLR3_UINT64)(ptr))
 #define ANTLR3_UINT64_CAST(ptr)	(ANTLR3_UINT64)(ptr))
 #define	ANTLR3_UINT32_CAST(ptr) (ANTLR3_UINT32)((ANTLR3_UINT64)(ptr))
@@ -434,7 +434,7 @@ typedef ANTLR3_UINT32		ANTLR3_INTKEY;
 
 #endif
 
-#ifdef ANTLR3_USE_64BIT
+#if defined(__LP64__) || defined(_LP64) || defined(_WIN64)
 #define ANTLR3_TRIE_DEPTH 63
 #else
 #define ANTLR3_TRIE_DEPTH 31

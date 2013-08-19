@@ -2018,7 +2018,7 @@ intTrieAdd	(pANTLR3_INT_TRIE trie, ANTLR3_INTKEY key, ANTLR3_UINT32 type, ANTLR3
 
 	/* Most common case is a 32 bit key really
 	 */
-#ifdef	ANTLR3_USE_64BIT
+#if defined(__LP64__) || defined(_LP64) || defined(_WIN64)
 	if	(xorKey & 0xFFFFFFFF00000000)
 	{
 		if  (xorKey & 0xFFFF000000000000)

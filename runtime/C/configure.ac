@@ -93,9 +93,9 @@ aCC*)
 gcc*)
  CPPCMNTFLAGS=
  if test x"$enable_64bit" = xyes; then
-  GCCABIFLAGS="-m64"
+  GCCABIFLAGS=$CFLAGS
  else
-  GCCABIFLAGS="-m32"
+  GCCABIFLAGS=$CFLAGS
  fi
  if test x"$enable_abiflags" = xyes; then
   CCFLAGS64=$GCCABIFLAGS
