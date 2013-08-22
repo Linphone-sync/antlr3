@@ -137,7 +137,7 @@ esac
 
 case $host in
 *mingw*)
- ANTLR_LIBS="-lWs2_32"
+ ANTLR_LIBS="-lws2_32"
  ;;
 esac
 
