@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.6)
-project(LIBANTLR3C C)
+project(ANTLR3C C)
 
 set(SOURCE_FILES
     antlr3baserecognizer.c
@@ -31,20 +31,18 @@ if(WIN32)
 set(LIBS ws2_32)
 endif(WIN32)
 
-add_library(libantlr3c SHARED ${SOURCE_FILES})
-set_target_properties(libantlr3c PROPERTIES VERSION 3.4 SOVERSION 1)
+add_library(antlr3c SHARED ${SOURCE_FILES})
+set_target_properties(antlr3c PROPERTIES VERSION 3.4 SOVERSION 1)
 
-target_link_libraries(libantlr3c ${LIBS})
+target_link_libraries(antlr3c ${LIBS})
 
-install(TARGETS libantlr3c
-	COMPONENT COMP_libantlr3c
+install(TARGETS antlr3c
 	DESTINATION ${LIB_INSTALL_DIR}
 	PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
 if(WIN32)
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/libantlr3c.pdb
-	COMPONENT COMP_libantlr3c
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/antlr3c.pdb
 	DESTINATION ${LIB_INSTALL_DIR}
 	PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
