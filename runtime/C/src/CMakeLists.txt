@@ -1,50 +1,84 @@
-cmake_minimum_required(VERSION 2.6)
-project(ANTLR3C C)
+############################################################################
+# CMakeLists.txt
+# Copyright (C) 2014  Belledonne Communications, Grenoble France
+#
+############################################################################
+#
+# This program is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+#
+############################################################################
+
+if("${LIB_INSTALL_DIR}" STREQUAL "")
+	set(LIB_INSTALL_DIR lib)
+endif()
 
 set(SOURCE_FILES
-    antlr3baserecognizer.c
-    antlr3basetree.c
-    antlr3basetreeadaptor.c
-    antlr3bitset.c
-    antlr3collections.c
-    antlr3commontoken.c
-    antlr3commontree.c
-    antlr3commontreeadaptor.c
-    antlr3commontreenodestream.c
-    antlr3convertutf.c
-    antlr3cyclicdfa.c
-    antlr3debughandlers.c
-    antlr3encodings.c
-    antlr3exception.c
-    antlr3filestream.c
-    antlr3inputstream.c
-    antlr3intstream.c
-    antlr3lexer.c
-    antlr3parser.c
-    antlr3rewritestreams.c
-    antlr3string.c
-    antlr3tokenstream.c
-    antlr3treeparser.c
+	antlr3baserecognizer.c
+	antlr3basetree.c
+	antlr3basetreeadaptor.c
+	antlr3bitset.c
+	antlr3collections.c
+	antlr3commontoken.c
+	antlr3commontree.c
+	antlr3commontreeadaptor.c
+	antlr3commontreenodestream.c
+	antlr3convertutf.c
+	antlr3cyclicdfa.c
+	antlr3debughandlers.c
+	antlr3encodings.c
+	antlr3exception.c
+	antlr3filestream.c
+	antlr3inputstream.c
+	antlr3intstream.c
+	antlr3lexer.c
+	antlr3parser.c
+	antlr3rewritestreams.c
+	antlr3string.c
+	antlr3tokenstream.c
+	antlr3treeparser.c
+	${CMAKE_CURRENT_BINARY_DIR}/antlr3config.h
 )
+set_source_files_properties(${CMAKE_CURRENT_BINARY_DIR}/antlr3config.h PROPERTIES GENERATED ON)
 
 if(WIN32)
-set(LIBS ws2_32)
+	set(LIBS ws2_32)
 endif(WIN32)
 
-add_library(antlr3c SHARED ${SOURCE_FILES})
-set_target_properties(antlr3c PROPERTIES VERSION 3.4 SOVERSION 1)
+set(LIBRARY_TARGETS )
+if(${ENABLE_STATIC})
+	add_library(antlr3c-static STATIC ${SOURCE_FILES})
+	set_target_properties(antlr3c-static PROPERTIES OUTPUT_NAME antlr3c)
+	target_link_libraries(antlr3c-static ${LIBS})
+	list(APPEND LIBRARY_TARGETS antlr3c-static)
+endif(${ENABLE_STATIC})
+if(${ENABLE_SHARED})
+	add_library(antlr3c SHARED ${SOURCE_FILES})
+	set_target_properties(antlr3c PROPERTIES VERSION 3.4 SOVERSION 1)
+	target_link_libraries(antlr3c ${LIBS})
+	list(APPEND LIBRARY_TARGETS antlr3c)
+endif(${ENABLE_SHARED})
 
-target_link_libraries(antlr3c ${LIBS})
-
-install(TARGETS antlr3c
+install(TARGETS ${LIBRARY_TARGETS}
 	DESTINATION ${LIB_INSTALL_DIR}
 	PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
 )
-if(WIN32)
-if(CMAKE_BUILD_TYPE STREQUAL "Debug")
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/antlr3c.pdb
-	DESTINATION ${LIB_INSTALL_DIR}
-	PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
-)
-endif()
-endif(WIN32)
+if(MSVC)
+	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/antlr3c.pdb
+			DESTINATION ${LIB_INSTALL_DIR}
+			PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+		)
+	endif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+endif(MSVC)

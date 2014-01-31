@@ -20,9 +20,12 @@
 #
 ############################################################################
 
-file(GLOB HEADER_FILES "*.h")
+cmake_minimum_required(VERSION 2.8)
+project(ANTLR3 C)
 
-install(FILES ${HEADER_FILES}
-	DESTINATION include
+add_subdirectory(runtime/C)
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/antlr-3.4-complete.jar
+	DESTINATION share/java/antlr3.jar
 	PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
 )
