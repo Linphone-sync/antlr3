@@ -32,7 +32,6 @@ set(VERSION "${PACKAGE_VERSION}")
 
 option(ENABLE_SHARED "Build shared library." ON)
 option(ENABLE_STATIC "Build static library." ON)
-option(ENABLE_DEBUGINFO "Compiles debug info into the library." OFF)
 option(ENABLE_64BIT "Turns on flags that produce 64 bit object code if any are required." OFF)
 option(ENABLE_DEBUGGER "Turns on default flags that include the antlr debugger in the runtime. Disable to remove debugger and the socket dependancies." ON)
 
@@ -101,14 +100,7 @@ endforeach(KEYWORD)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/antlr3config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/antlr3config.h)
 
 
-set(WARN_CFLAGS "-Wall")
-if(${ENABLE_DEBUGINFO})
-	set(OPTIM_CFLAGS "-O0")
-	set(DEBUG_CFLAGS "-g")
-else(${ENABLE_DEBUGINFO})
-	set(OPTIM_CFLAGS "-O2")
-endif(${ENABLE_DEBUGINFO})
-add_definitions(${WARN_CFLAGS} ${OPTIM_CFLAGS} ${DEBUG_CFLAGS})
+add_definitions("-Wall")
 if(CMAKE_COMPILER_IS_GNUCC)
 	set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-no-undefined")
 endif(CMAKE_COMPILER_IS_GNUCC)
