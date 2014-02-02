@@ -20,9 +20,12 @@
 #
 ############################################################################
 
-if("${LIB_INSTALL_DIR}" STREQUAL "")
-	set(LIB_INSTALL_DIR lib)
-endif()
+if(WIN32)
+	set(SHARED_LIB_INSTALL_DIR bin)
+else(WIN32)
+	set(SHARED_LIB_INSTALL_DIR lib)
+endif(WIN32)
+set(STATIC_LIB_INSTALL_DIR lib)
 
 set(SOURCE_FILES
 	antlr3baserecognizer.c
@@ -56,24 +59,25 @@ if(WIN32)
 	set(LIBS ws2_32)
 endif(WIN32)
 
-set(LIBRARY_TARGETS )
 if(${ENABLE_STATIC})
 	add_library(antlr3c-static STATIC ${SOURCE_FILES})
 	set_target_properties(antlr3c-static PROPERTIES OUTPUT_NAME antlr3c)
 	target_link_libraries(antlr3c-static ${LIBS})
-	list(APPEND LIBRARY_TARGETS antlr3c-static)
+	install(TARGETS antlr3c-static
+		DESTINATION ${STATIC_LIB_INSTALL_DIR}
+		PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+	)
 endif(${ENABLE_STATIC})
 if(${ENABLE_SHARED})
 	add_library(antlr3c SHARED ${SOURCE_FILES})
 	set_target_properties(antlr3c PROPERTIES VERSION 3.4 SOVERSION 1)
 	target_link_libraries(antlr3c ${LIBS})
-	list(APPEND LIBRARY_TARGETS antlr3c)
+	install(TARGETS antlr3c
+		DESTINATION ${SHARED_LIB_INSTALL_DIR}
+		PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+	)
 endif(${ENABLE_SHARED})
 
-install(TARGETS ${LIBRARY_TARGETS}
-	DESTINATION ${LIB_INSTALL_DIR}
-	PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
-)
 if(MSVC)
 	if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 		install(FILES ${CMAKE_CURRENT_BINARY_DIR}/Debug/antlr3c.pdb
