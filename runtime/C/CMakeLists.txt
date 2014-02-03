@@ -30,8 +30,7 @@ set(PACKAGE_URL "")
 set(VERSION "${PACKAGE_VERSION}")
 
 
-option(ENABLE_SHARED "Build shared library." ON)
-option(ENABLE_STATIC "Build static library." ON)
+option(ENABLE_STATIC "Build static library (default is shared library)." OFF)
 option(ENABLE_64BIT "Turns on flags that produce 64 bit object code if any are required." OFF)
 option(ENABLE_DEBUGGER "Turns on default flags that include the antlr debugger in the runtime. Disable to remove debugger and the socket dependancies." ON)
 
