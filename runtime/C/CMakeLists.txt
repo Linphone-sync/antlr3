@@ -112,3 +112,10 @@ include_directories(
 
 add_subdirectory(include)
 add_subdirectory(src)
+
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/antlr3config.h
+	DESTINATION include
+	PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
+)
+
