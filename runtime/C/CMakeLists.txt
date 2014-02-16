@@ -99,10 +99,12 @@ endforeach(KEYWORD)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/antlr3config.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/antlr3config.h)
 
 
-add_definitions("-Wall")
-if(CMAKE_COMPILER_IS_GNUCC)
+if(MSVC)
+	add_definitions("/W3")
+else(MSVC)
+	add_definitions("-Wall")
 	set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-no-undefined")
-endif(CMAKE_COMPILER_IS_GNUCC)
+endif(MSVC)
 
 
 include_directories(
