@@ -103,7 +103,6 @@ if(MSVC)
 	add_definitions("/W3")
 else(MSVC)
 	add_definitions("-Wall")
-	set(CMAKE_SHARED_LINKER_FLAGS "-Wl,-no-undefined")
 endif(MSVC)
 
 
