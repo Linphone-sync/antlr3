@@ -29,3 +29,4 @@ intltool-merge.in
 intltool-update.in
 INSTALL
 
+runtime/C/include/antlr3config.h
