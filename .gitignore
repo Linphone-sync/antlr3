@@ -30,3 +30,6 @@ intltool-update.in
 INSTALL
 
 runtime/C/include/antlr3config.h
+*.m4
+compile
+antlr3config.h.in
