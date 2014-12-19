@@ -25,7 +25,7 @@ project(ANTLR3 C)
 
 add_subdirectory(runtime/C)
 
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/antlr-3.2.jar
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/antlr-3.4-complete.jar
 	DESTINATION share/java
 	RENAME antlr3.jar
 	PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ WORLD_READ
